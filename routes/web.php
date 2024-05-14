@@ -6,22 +6,35 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return Inertia::render('Home');
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/profile', function () {
+    return Inertia::render('Profile');
+})->middleware(['auth', 'verified'])->name('profile');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+Route::get('/education', function () {
+    return Inertia::render('Education');
+})->middleware(['auth', 'verified'])->name('education');
+
+Route::get('/compiler', function () {
+    return Inertia::render('Compiler');
+})->middleware(['auth', 'verified'])->name('compiler');
+
+Route::get('/daily-challenge', function () {
+    return Inertia::render('DailyChallenge');
+})->middleware(['auth', 'verified'])->name('daily-challenge');
+
+Route::get('/weekly-challenge', function () {
+    return Inertia::render('WeeklyChallenge');
+})->middleware(['auth', 'verified'])->name('weekly-challenge');
+
+Route::get('/courses-catalog', function () {
+    return Inertia::render('CourseCatalog');
+})->middleware(['auth', 'verified'])->name('weekly-challenge');
+
+Route::get('/course/{id}', function () {
+    return Inertia::render('CourseView');
+})->middleware(['auth', 'verified'])->name('course-id');
 
 require __DIR__.'/auth.php';

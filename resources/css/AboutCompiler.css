@@ -1,0 +1,37 @@
+.aboutcompiler {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.aboutcompiler::after {
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: #D9D9D9;
+}
+
+.aboutcompiler__container {
+    display: flex;
+}
+
+.aboutcompiler__title {
+    font-size: 40px;
+    padding-bottom: 25px;
+}
+
+.aboutcompiler__text {
+    line-height: 150%;
+    padding-bottom: 25px;
+    max-width: 600px;
+}
+
+.aboutcompiler__button {
+    margin-top: 20px;
+    width: 250px;
+    height: 50px;
+}
+
+.aboutcompiler__photo {
+    height: 350px;
+}

@@ -1,0 +1,52 @@
+.dailychallenge {
+    width: 575px;
+    height: 130px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 8px 26px 0 rgba(0,0,0,0.25);
+    padding: 20px 20px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.dailychallenge:hover {
+    background-color: #59AFF1;
+    color: white;
+}
+
+.dailychallenge:hover .color-blue {
+    color: white;
+}
+
+.dailychallenge:hover .tag {
+    background-color: #ffffff;
+    color: #59AFF1;
+}
+
+.dailychallenge__title {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.dailychallenge__level {
+    font-size: 16px;
+    font-weight: 500;
+    padding-bottom: 20px;
+}
+
+.dailychallenge__bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dailychallenge__tags {
+    width: 250px;
+    height: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.dailychallenge__time {
+    font-size: 14px;
+    font-weight: 700;
+}

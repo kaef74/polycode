@@ -1,0 +1,51 @@
+.courseinfo__title {
+    font-size: 40px;
+    padding-bottom: 25px;
+}
+
+.courseinfo__rating {
+    display: flex;
+    gap: 3px;
+    font-weight: 700;
+    padding-bottom: 25px;
+}
+
+.courseinfo__block {
+    width: 150px;
+    height: 45px;
+    background-color: #CDE3FF;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+}
+
+.courseinfo__description {
+    padding-bottom: 25px;
+    line-height: 150%;
+    max-width: 1000px;
+}
+
+.courseinfo__people {
+    font-weight: 700;
+    padding-bottom: 25px;
+}
+
+.courseinfo__info {
+    display: flex;
+    gap: 10px;
+}
+
+.courseinfo__buttons {
+    margin-top: 25px;
+    display: flex;
+    gap: 15px;
+}
+
+.courseinfo__button {
+    width: 250px;
+    height: 50px;
+}

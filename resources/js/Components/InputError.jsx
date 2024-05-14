@@ -1,7 +1,9 @@
+import '../../css/InputError.css';
+
 export default function InputError({ message, className = '', ...props }) {
     return message ? (
-        <p {...props} className={'text-sm text-red-600 ' + className}>
-            {message}
-        </p>
+        <li {...props} className={className}>
+            <p>{message}</p>
+        </li>
     ) : null;
 }

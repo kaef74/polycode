@@ -1,0 +1,80 @@
+.login__title {
+    font-size: 40px;
+    font-weight: 700;
+    padding-bottom: 15px;
+}
+
+.login__container {
+    padding: 40px 0px;
+}
+
+.login__text {
+    max-width: 430px;
+    font-size: 14px;
+    font-weight: 400;
+    padding-bottom: 50px;
+}
+
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.login__input {
+    width: 230px;
+    border: none;
+    border-bottom: 2px solid #D9D9D9;
+    padding: 3px 10px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.5s;
+}
+
+.login__input:focus {
+    border-bottom: 2px solid #59A1FF;
+}
+
+.login__recovery {
+    font-size: 12px;
+    color: #a2a2a2;
+    margin-top: -25px;
+    padding-bottom: 10px;
+}
+
+.login__recovery:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+    cursor: pointer;
+}
+
+.login__button--container {
+
+    margin-top: -20px;
+}
+.login__checkbox {
+    margin-left: 5px;
+    display: flex;
+}
+
+.login__button {
+    width: 230px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.noregistered {
+    margin-left: 5px;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.to-registration:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-position: under;
+}

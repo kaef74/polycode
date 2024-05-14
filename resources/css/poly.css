@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  list-style: none;
+  z-index: 6;
+  scroll-behavior: smooth;
+  
+}
+
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+.header + section {
+  padding-top: 0px;
+}
+
+section {
+  margin: 0 auto;
+  width: 1200px;
+  height: auto;
+  padding-top: 150px;
+  z-index: 5;
+}
+
+.color-blue {
+  color: #59A1FF;
+  transition: 0.2s;
+}
+
+
+.color-red {
+  color: red;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.button {
+  background-color: #59AFF1;
+  color: #FFFFFF;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  transition: 0.2s;
+  border: 2px solid #59AFF1;
+  cursor: pointer;
+}
+
+.button-reverse {
+  background-color: #FFFFFF;
+  color: #59A1FF;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  transition: 0.2s;
+  border: 2px solid #59A1FF;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #FFFFFF;
+  color: #59A1FF;
+}
+
+.button-reverse:hover {
+  background-color: #59A1FF;
+  color: #FFFFFF;
+
+}
+
+.checkbox {
+  cursor: pointer;
+}
+
+.tag {
+  width: auto;
+  height: 22px;
+  background-color: #59A1FF;
+  padding: 1px 5px;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.star {
+  width: 20px;
+  height: 20px;
+}
+
+/* FONT WEIGTH */
+
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-black {
+  font-weight: 900;
+}
+
+/* --------- */
+
+/* BACKGROUND COLORS */
+
+.background-d9d9d9 {
+  background-color: #d9d9d9;
+}
+
+.background-B1D4E5-50 {
+  background-color: rgba(177,212,229, 0.5);
+}
+
+.background-B1D4E5 {
+  background-color: #B1D4E5;
+}
+
+.background-59A1FF-50 {
+  background-color: rgba(89,161,255,0.7);
+}
+
+.background-59A1FF {
+  background-color: #59A1FF;
+}
+
+/* --------------- */

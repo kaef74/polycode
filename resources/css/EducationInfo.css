@@ -1,0 +1,49 @@
+.educationinfo {
+    margin-top: 20px;
+    display: flex;
+}
+
+.educationinfo__title {
+    font-size: 35px;
+    font-weight: 700;
+    padding-bottom: 20px;
+}
+
+.educationinfo__text {
+    font-size: 18px;
+    max-width: 700px;
+    padding-bottom: 30px;
+    line-height: 150%;
+}
+
+.educationinfo__list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.educationinfo__item {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 580px;
+    height: auto;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #D9D9D9;
+}
+
+.educationinfo__item__title {
+    font-size: 24px;
+    font-weight: 700;
+    padding: 0 10px;
+}
+
+.educationinfo__photo {
+    pointer-events: none;
+}
+
+
+.educationinfo__item__text {
+    font-style: italic;
+    line-height: 150%;
+}

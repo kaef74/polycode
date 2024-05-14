@@ -1,0 +1,68 @@
+.registration {
+    padding: 40px 40px;
+}
+
+.registration__title {
+    font-size: 40px;
+    font-weight: 700;
+    padding-bottom: 15px;
+}
+
+.registration__text {
+    max-width: 560px;
+    font-size: 14px;
+    font-weight: 400;
+    padding-bottom: 40px;
+}
+
+.registration__form {
+    max-width: 530px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 65px;
+    row-gap: 35px;
+}
+
+.registration__input {
+    width: 230px;
+    border: none;
+    border-bottom: 2px solid #D9D9D9;
+    padding: 3px 10px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.5s;
+}
+
+.registration__input:focus {
+    border-bottom: 2px solid #59A1FF;
+}
+
+.registration__button {
+    width: 230px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.registration__checkbox {
+    max-width: 230px;
+    font-size: 14px;
+}
+
+.checkbox {
+    margin-right: 5px;
+}
+
+.registered {
+    margin-top: 5px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.to-login:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-position: under;
+}

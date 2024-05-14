@@ -1,0 +1,47 @@
+.suggestedcourseitem {
+    width: 100%;
+    height: 75px;
+    background-color: #F5F5F5;
+    box-shadow: 0 0px 0px 0 rgba(0,0,0,0.25);
+    padding: 10px 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    transition: 0.2s;
+}
+
+.suggestedcourseitem__info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.suggestedcourseitem__title {
+    font-size: 20px;
+}
+
+.suggestedcourseitem__text {
+    font-size: 16px;
+}
+
+.suggestedcourseitem__statistics {
+    display: flex;
+    text-align: right;
+    align-items: end;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.suggestedcourseitem__rating {
+    display: flex;
+}
+
+.suggestedcourseitem__more {
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.suggestedcourseitem__more:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}

@@ -1,0 +1,109 @@
+.useractivity {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    height: 160px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 8px 26px 0 rgba(0,0,0,0.25);
+    padding: 10px 20px;
+}
+
+.activity::after {
+    content: "";
+    margin-top: 30px;
+    width: 100%;
+    height: 1px;
+    background-color: #d9d9d9;
+}
+
+.activity__container {
+    display: flex;
+    gap: 3px;
+    padding-bottom: 20px;
+}
+
+.activity__table {
+    width: 622px;
+    height: 82px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+
+.activity__day {
+    font-size: 9.9px;
+    font-weight: 400;
+}
+
+.activity__box {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    z-index: 0;
+}
+
+.activity__box:hover {
+    border: 1px solid black;
+}
+
+.activity__weekday {
+    margin-top: 17px;
+}
+
+.activity__month {
+    font-size: 10px;
+}
+
+.activity__right-block {
+    padding: 2px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.activity__months {
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+}
+
+.activity__aboutdate {
+    height: 0px;
+    margin-top: -15px;
+}
+
+.activity__info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.activity__graduation {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    
+}
+
+.graduation__list {
+    display: flex;
+    gap: 5px;
+}
+
+.graduation__box {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+}
+
+.activity__totaltasks {
+    font-size: 13px;
+    color: #a2a2a2;
+    font-weight: 400;
+}
+
+.activity__date {
+    font-size: 14px;
+    font-weight: 600;
+}

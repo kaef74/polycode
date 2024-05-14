@@ -1,0 +1,24 @@
+.education {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.education__challenges {
+    display: flex;
+    gap: 50px
+}
+
+.education__usercourses .usercourses__title {
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.education__usercourses .usercourses {
+    width: 575px;
+}
+
+.education__courses {
+    display: flex;
+    gap: 50px;
+}

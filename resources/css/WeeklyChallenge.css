@@ -1,0 +1,54 @@
+.weeklychallengepage__title {
+    font-size: 40px;
+    padding-bottom: 25px;
+}
+
+.weeklychallengepage__tags {
+    display: flex;
+    gap: 5px;
+    padding-bottom: 25px;
+}
+
+.weeklychallengepage__level {
+    font-weight: 500;
+    padding-bottom: 25px;
+}
+
+.weeklychallengepage__time {
+    font-weight: 700;
+    padding-bottom: 25px;
+}
+
+.weeklychallengepage__field {
+    width: 1200px;
+    height: auto;
+    box-shadow: 0 8px 26px 0 rgba(0,0,0,0.25);
+    padding: 20px 20px;
+    border-radius: 10px;
+}
+
+.weeklychallengepage__requirements {
+    padding-bottom: 25px;
+    font-weight: 500;
+}
+
+.weeklychallengepage__requirements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 25px;
+}
+
+.requirement {
+    font-style: italic;
+}
+
+.weeklychallengepage__input {
+    padding-bottom: 25px;
+}
+
+.weeklychallengepage__button {
+    width: 250px;
+    height: 50px;
+    cursor: pointer;
+}

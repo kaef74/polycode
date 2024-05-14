@@ -1,0 +1,46 @@
+.suggestedcourses {
+    width: 575px;
+    height: 350px;
+    background-color: #FFFFFF;
+    box-shadow: 0 8px 26px 0 rgba(0,0,0,0.25);
+    padding: 20px 20px;
+    border-radius: 10px;
+}
+
+.suggestedcourses__title {
+    font-size: 24px;
+    font-weight: 500;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+.suggestedcourses__list {
+    display: flex;
+    flex-direction: column;
+    height: 270px;
+    gap: 20px;
+}
+
+.suggestedcourses__top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.suggestedcourses__button {
+    width: 150px;
+    height: 30px;
+    background-color: #59AFF1;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-weight: 700;
+    border: 2px solid #59AFF1;
+    transition: 0.2s;
+}
+
+.suggestedcourses__button:hover {
+    background-color: #FFF;
+    color: #59AFF1;
+}

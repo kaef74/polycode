@@ -1,0 +1,33 @@
+.filters {
+    width: 250px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.filters__title {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.filters__block {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filters__name {
+    font-weight: 600;
+}
+
+.filters__list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filters__item {
+    display: flex;
+    align-items: center;
+}

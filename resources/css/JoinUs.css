@@ -1,0 +1,23 @@
+.joinus {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.joinus__title {
+    font-size: 40px;
+    padding-bottom: 25px;
+}
+
+.joinus__text {
+    margin: 0 auto;
+    line-height: 150%;
+    font-size: 18px;
+    padding-bottom: 25px;
+    max-width: 850px;
+}
+
+.joinus__button {
+    margin: 0 auto;
+    width: 250px;
+    height: 50px;
+}

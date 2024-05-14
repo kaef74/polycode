@@ -1,0 +1,39 @@
+.compiler__title {
+    font-size: 40px;
+    font-weight: 700;
+    padding-bottom: 20px;
+}
+
+.compiler__text {
+    padding-bottom: 30px;
+    max-width: 620px;
+}
+
+.compiler__field {
+    width: 1200px;
+    height: 400px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 8px 26px 0 rgba(0,0,0,0.25);
+    padding: 20px 20px;
+}
+
+.compiler__top {
+    display: flex;
+    gap: 15px;
+    padding-bottom: 10px;
+    z-index: 999 !important;
+}
+
+.compiler__bottom {
+    display: flex;
+    gap: 50px;
+}
+
+.compiler__button {
+    width: 200px;
+    height: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+}

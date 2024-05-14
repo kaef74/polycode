@@ -1,0 +1,40 @@
+.aboutleaderboard {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.aboutleaderboard::after {
+    margin-top: 30px;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: #D9D9D9;
+}
+
+.aboutleaderboard__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.aboutleaderboard__title {
+    font-size: 40px;
+    padding-bottom: 25px;
+}
+
+.aboutleaderboard__text {
+    font-size: 18px;
+    line-height: 150%;
+    padding-bottom: 25px;
+}
+
+.aboutleaderboard__button {
+    width: 250px;
+    height: 50px;
+}
+
+.aboutleaderboard__photo {
+    height: 350px;
+}

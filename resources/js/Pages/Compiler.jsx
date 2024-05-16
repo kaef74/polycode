@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.jsx';
+import GuestLayout from '@/Layouts/GuestLayout.jsx';
 import '../../css/Compiler.css';
 import CompilerField from '../Components/Compiler/CompilerField.jsx';
 import SelectLanguage from '../Components/Compiler/SelectLanguage.jsx';
@@ -19,7 +19,7 @@ export default function Compiler ({ auth }) {
     };
 
     return (
-        <AuthenticatedLayout auth={auth}>
+        <GuestLayout auth={auth}>
         <section className='compiler'>
             <h1 className='compiler__title'>Компилятор</h1>
             <p className='compiler__text'>На нашей платформе вы можете быстро и легко компилировать код на различных языках программирования прямо в вашем браузере. Просто введите код, выберите язык и получите результаты.</p>
@@ -34,6 +34,6 @@ export default function Compiler ({ auth }) {
                 </div>
             </div>
         </section>
-        </AuthenticatedLayout>
+        </GuestLayout>
     )
 }

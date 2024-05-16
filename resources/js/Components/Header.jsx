@@ -8,8 +8,8 @@ import { useState, useEffect } from 'react';
 import { Link } from '@inertiajs/react';
 
 export default function Header ({ auth }) {
-    const [userStatus, setUserStatus] = useState(true);
     const [showBurger, setShowBurger] = useState(false);
+    const { user } = auth;
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -31,15 +31,17 @@ export default function Header ({ auth }) {
     return (
         <header className='header'>
             <div className='header__container'>
-                <Link href="/">
+                <Link href={route('home')} className='header__logo'>
                     <img src={logo} className='header__logo' alt="Логотип" />
                 </Link>
                 <ul className='header__navbar'>
                     <li className='navbar__item'>
-                        <a href="#" className='navbar__link'>Главная</a>
+                        <Link href={route('home')} className='navbar__link'>
+                            Главная
+                        </Link>
                     </li>
                     <li className='navbar__item'>
-                        <Link to="/education" className='navbar__link'>
+                        <Link href={route('education')} className='navbar__link'>
                             Обучение
                         </Link>
                     </li>
@@ -50,14 +52,14 @@ export default function Header ({ auth }) {
                         <a href="#" className='navbar__link'>Форум</a>
                     </li>
                     <li className='navbar__item'>
-                        <Link to="compiler" className='navbar__link'>Компилятор</Link>
+                        <Link href={route('compiler')} className='navbar__link'>Компилятор</Link>
                     </li>
                 </ul>
                 {auth.user ? (
                     <>
                         <div className='header__profile'>
                             <div onClick={() => {setShowBurger(!showBurger)}} className='button header__button'>
-                                Сергей М.
+                                {user.first_name + " " + user.last_name}
                             </div>
                             {showBurger && (
                                 <ul className='header__profile-menu'>

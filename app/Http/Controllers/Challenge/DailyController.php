@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Challenge;
 
 use App\Http\Controllers\Controller;
 use App\Models\Challenge\Daily;
-use App\Models\Challenge\Language; // Подключаем модель языков, если она в другом namespace
+use App\Models\Language;
+use App\Models\Level;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Carbon\Carbon;
@@ -13,23 +14,34 @@ class DailyController extends Controller
 {
     public function index()
     {
-        $now = Carbon::now();
+        $data = self::getDailyChallengeData();
+        return Inertia::render('DailyChallenge', $data);
+    }
+
+    public static function getDailyChallengeData()
+    {
+        $now = Carbon::now('Europe/Moscow');
         $endOfDay = $now->copy()->endOfDay();
-        $timeLeft = $endOfDay->diffForHumans($now, true); // Используем diffForHumans для красивого формата
+        $timeLeft = $endOfDay->diffForHumans($now, true);
 
-        $daily = Daily::where('active', true)->with('language')->first();
+        $daily = Daily::where('active', true)->with(['language', 'level'])->first();
+        $serverTime = $now->toDateTimeString();
 
-        return Inertia::render('DailyChallenge', [
+        return [
             'daily' => $daily ? $daily->toArray() : null,
-            'timeLeft' => $timeLeft
-        ]);
+            'timeLeft' => $timeLeft,
+            'serverTime' => $serverTime
+        ];
     }
 
     public function create()
     {
-        // Получаем список языков для выбора в форме
         $languages = Language::all();
-        return Inertia::render('DailyChallenge/Create', ['languages' => $languages]);
+        $levels = Level::all();
+        return Inertia::render('DailyChallenge/Create', [
+            'languages' => $languages,
+            'levels' => $levels
+        ]);
     }
 
     public function store(Request $request)
@@ -37,17 +49,16 @@ class DailyController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'level' => 'required|string',
-            'input_example' => 'nullable|string',
-            'output_example' => 'nullable|string',
-            'note' => 'nullable|string',
-            'language_id' => 'required|exists:languages,id', // Убедимся, что id языка существует
+            'level_id' => 'required|exists:levels,id',
+            'input_example' => 'required|string',
+            'output_example' => 'required|string',
+            'note' => 'required|string',
+            'language_id' => 'required|exists:languages,id',
             'active' => 'boolean'
         ]);
 
         $daily = Daily::create($validated);
 
-        // Управление активным заданием
         if ($validated['active']) {
             Daily::where('id', '!=', $daily->id)->update(['active' => false]);
         }
@@ -65,9 +76,11 @@ class DailyController extends Controller
     public function edit(Daily $daily)
     {
         $languages = Language::all();
+        $levels = Level::all();
         return Inertia::render('DailyChallenge/Edit', [
             'daily' => $daily,
-            'languages' => $languages
+            'languages' => $languages,
+            'levels' => $levels
         ]);
     }
 
@@ -76,17 +89,16 @@ class DailyController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'level' => 'required|string',
-            'input_example' => 'nullable|string',
-            'output_example' => 'nullable|string',
-            'note' => 'nullable|string',
+            'level_id' => 'required|exists:levels,id',
+            'input_example' => 'required|string',
+            'output_example' => 'required|string',
+            'note' => 'required|string',
             'language_id' => 'required|exists:languages,id',
             'active' => 'boolean'
         ]);
 
         $daily->update($validated);
 
-        // Управление активным заданием
         if ($validated['active']) {
             Daily::where('id', '!=', $daily->id)->update(['active' => false]);
         }

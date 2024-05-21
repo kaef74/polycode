@@ -5,10 +5,10 @@ import '../../css/DailyChallenge.css';
 
 import { useState, useEffect } from 'react';
 
-export default function DailyChallengePage({ auth, daily}) {
+export default function DailyChallengePage({ auth, daily, serverTime }) {
     const [selectedLanguage, setSelectedLanguage] = useState(daily ? daily.language.name : "");
     const [editorCode, setEditorCode] = useState("");
-    const [timeLeftFormatted, setTimeLeftFormatted] = useState("");
+    const [currentTime, setCurrentTime] = useState(new Date(serverTime));
 
     const handleLanguageChange = (language) => {
         setSelectedLanguage(language);
@@ -19,10 +19,8 @@ export default function DailyChallengePage({ auth, daily}) {
     };
 
     const calculateTimeLeft = () => {
-        const now = new Date();
-        const midnight = new Date(now);
-        midnight.setHours(24, 0, 0, 0);
-        const diff = midnight - now;
+        const midnight = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate() + 1);
+        const diff = midnight - currentTime;
         const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, '0');
         const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
         const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
@@ -31,10 +29,12 @@ export default function DailyChallengePage({ auth, daily}) {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setTimeLeftFormatted(calculateTimeLeft());
+            setCurrentTime(new Date(currentTime.getTime() + 1000));
         }, 1000);
         return () => clearInterval(interval);
-    }, []);
+    }, [currentTime]);
+
+    const timeLeftFormatted = calculateTimeLeft();
 
     return (
         <AuthenticatedLayout auth={auth}>
@@ -45,8 +45,7 @@ export default function DailyChallengePage({ auth, daily}) {
                         <div className='dailychallengepage__tags'>
                             <div className='tag'>#{daily.language.name.toUpperCase()}</div>
                         </div>
-                        <p className='dailychallengepage__level'>Уровень: <span
-                            className='color-blue'>{daily.level}</span></p>
+                        <p className='dailychallengepage__level'>Уровень: <span className='color-blue'>{daily.level.name}</span></p>
                         <p className='dailychallengepage__time'>Осталось времени: {timeLeftFormatted}</p>
 
                         <div className='dailychallengepage__field'>

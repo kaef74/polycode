@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Challenge\DailyController;
 use App\Models\Education;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -13,7 +14,8 @@ class EducationController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Education');
+        $dailyData = DailyController::getDailyChallengeData();
+        return Inertia::render('Education', $dailyData);
     }
 
     /**

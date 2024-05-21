@@ -7,23 +7,23 @@ import WeeklyChallenge from '../Components/Education/WeeklyChallenge.jsx';
 import UserCourses from '../Components/Profile/UserCourses/UserCourses.jsx';
 import '../../css/Education.css';
 
-export default function Education ({ auth }) {
+export default function Education({ auth, daily, serverTime }) {
     return (
         <AuthenticatedLayout auth={auth}>
-        <section className='education'>
-            <div className='education__challenges'>
-                <DailyChallenge />
-                <WeeklyChallenge />
-            </div>
-            <div className='education__courses'>
-                <div className='education__usercourses'>
-                    <UserCourses />
+            <section className='education'>
+                <div className='education__challenges'>
+                    <DailyChallenge daily={daily} serverTime={serverTime} />
+                    <WeeklyChallenge />
                 </div>
-                <SuggestedCourses />
-            </div>
-            <EducationInfo />
-            <Books />
-        </section>
+                <div className='education__courses'>
+                    <div className='education__usercourses'>
+                        <UserCourses />
+                    </div>
+                    <SuggestedCourses />
+                </div>
+                <EducationInfo />
+                <Books />
+            </section>
         </AuthenticatedLayout>
-    )
+    );
 }

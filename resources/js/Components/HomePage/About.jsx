@@ -13,7 +13,7 @@ const About = () => {
                     <p className='about__text'>
                     Мы - инновационная платформа с участием студентов от института РТУ МИРЭА, где вы можете углубить свои знания в программировании, участвовать в соревнованиях и компилировать код на различных языках программирования.
                     </p>
-                    <Link onClick={() => {window.scrollTo(0,0)}} to="/education" className="about__button button">Хочу обучаться</Link>
+                    <Link href={route('education')} className="about__button button">Хочу обучаться</Link>
                 </div>
                 <img src={photo} className='about__photo' alt="Фото" />
             </div>

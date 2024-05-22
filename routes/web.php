@@ -31,7 +31,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/course/{id}', [ViewController::class, 'index'])->name('course-id');
 
-
 });
 
 

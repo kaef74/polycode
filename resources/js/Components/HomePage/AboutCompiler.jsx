@@ -18,7 +18,7 @@ const AboutCompiler = () => {
                     <p className='abotucompiler__text'>
                     Этот инструмент обеспечивает удобство и эффективность в процессе программирования, а также устраняет необходимость установки и настройки дополнительного программного обеспечения на компьютере.
                     </p>
-                    <Link onClick={() => {window.scrollTo(0,0)}} to="/compiler" className="aboutcompiler__button button-reverse">Начать кодить</Link>
+                    <Link href={route('compiler')} className="aboutcompiler__button button-reverse">Начать кодить</Link>
                 </div>
             </div>
         </div>

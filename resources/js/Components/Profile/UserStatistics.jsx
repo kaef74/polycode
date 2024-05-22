@@ -15,10 +15,10 @@ const UserStatistics = () => {
                 </li>
                 <li className='userstatistics__item'>
                     <p className='userstatistics__name'>
-                        Пройдено курсов
+                        Очки
                     </p>
                     <p className='userstatistics__value'>
-                        3
+                        30
                     </p>
                 </li>
                 <li className='userstatistics__item'>

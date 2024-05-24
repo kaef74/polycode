@@ -17,3 +17,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/storage/app/current_challenge_state.txt
+/storage/app/current_weekly_challenge_state.txt

@@ -11,6 +11,7 @@ const PassingCourse = ({ auth }) => {
     const [currentTask, setCurrentTask] = useState(0);
     const [selectedLanguage, setSelectedLanguage] = useState("python");
     const [editorCode, setEditorCode] = useState("");
+    const [completedTasks, setCompletedTasks] = useState([]);
 
     const handleLanguageChange = (language) => {
         setSelectedLanguage(language);
@@ -23,24 +24,25 @@ const PassingCourse = ({ auth }) => {
     const handleCompleteTask = async (taskId) => {
         try {
             const response = await axios.post(`/tasks/${taskId}/complete`);
+            setCompletedTasks([...completedTasks, taskId]);
             alert('Задание выполнено!');
         } catch (error) {
             alert('Произошла ошибка при выполнении задания.');
         }
     };
 
-    const tasks = course.tasks;
+    const tasks = [{ id: 0, title_task: course.title_course, task: course.description_course, input_example: '', output_example: '', note_task: '' }, ...course.tasks];
 
     return (
         <AuthenticatedLayout auth={auth}>
             <section className='passingcourse'>
                 <div className='passingcourse__info'>
                     <h1 className='passingcourse__title'>{course.title_course}</h1>
-                    <p className='passingcourse__statistics'>Прогресс курса: 0 / {tasks.length}</p>
+                    <p className='passingcourse__statistics'>Прогресс курса: {completedTasks.length} / {tasks.length - 1}</p>
                     <ul className='passingcourse__tasklist'>
-                        {tasks.map((task, index) => (
+                        {tasks.slice(0, 6).map((task, index) => (
                             <li key={task.id} onClick={() => setCurrentTask(index)} className={`passingcourse__task ${currentTask === index ? 'current-task' : ''}`}>
-                                {index + 1}. {task.title_task}
+                                {index === 0 ? task.title_task : `${index}. ${task.title_task}`}
                             </li>
                         ))}
                     </ul>
@@ -55,7 +57,7 @@ const PassingCourse = ({ auth }) => {
                             </>
                         ) : (
                             <>
-                                <h2 className='passingcourse__tasknumber'>Задание №{currentTask + 1}</h2>
+                                <h2 className='passingcourse__tasknumber'>Задание №{currentTask}</h2>
                                 <p className='passingcourse__text'>{tasks[currentTask].task}</p>
                                 <p className='passingcourse__block'>Входные данные</p>
                                 <p className='passingcourse__input'>{tasks[currentTask].input_example}</p>
@@ -72,9 +74,26 @@ const PassingCourse = ({ auth }) => {
                                     </div>
                                 </div>
                                 <div className='passingcourse__buttons'>
-                                    <button className='passingcourse__button button' onClick={handleRunCode}>Отправить</button>
-                                    <button onClick={() => setCurrentTask(currentTask + 1)} className='passingcourse__button button'>Следующее задание</button>
-                                    <button onClick={() => handleCompleteTask(tasks[currentTask].id)} className='passingcourse__button button'>Завершить задание</button>
+                                    {completedTasks.includes(tasks[currentTask].id) ? (
+                                        <>
+                                            <p className='passingcourse__button button'>Вы выполнили задание</p>
+                                            <button onClick={() => setCurrentTask(currentTask + 1)}
+                                                    className='passingcourse__button button'>Следующее задание
+                                            </button>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <button className='passingcourse__button button'
+                                                    onClick={handleRunCode}>Отправить
+                                            </button>
+                                            <button onClick={() => setCurrentTask(currentTask + 1)}
+                                                    className='passingcourse__button button'>Следующее задание
+                                            </button>
+                                            <button onClick={() => handleCompleteTask(tasks[currentTask].id)}
+                                                    className='passingcourse__button button'>Завершить задание
+                                            </button>
+                                        </>
+                                    )}
                                 </div>
                             </>
                         )}

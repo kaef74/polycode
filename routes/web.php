@@ -39,9 +39,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::middleware(['course.enrolled'])->group(function () {
         Route::get('/passing-course/{id}', [TaskController::class, 'show'])->name('passing-course.show');
+        Route::post('/tasks/{taskId}/complete', [TaskController::class, 'markAsCompleted']);
     });
-
-    Route::post('/tasks/{task}/complete', [TaskController::class, 'markAsCompleted'])->name('tasks.complete');
 });
 
 

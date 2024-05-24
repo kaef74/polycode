@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('task_course_id')->constrained('task_course');
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('status_id')->constrained('statuses');
+            $table->boolean('is_completed')->default(false);
             $table->timestamps();
         });
     }

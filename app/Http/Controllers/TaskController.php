@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use App\Models\Course;
+use App\Models\UserCourseTask;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -22,9 +23,17 @@ class TaskController extends Controller
         $user = $request->user();
         $task = Task::findOrFail($taskId);
 
-        // Mark the task as completed (add logic to handle this)
-        // e.g., $user->completedTasks()->attach($taskId);
+        // Помечаем задание как завершенное
+        UserCourseTask::updateOrCreate(
+            [
+                'user_id' => $user->id,
+                'task_id' => $taskId,
+            ],
+            [
+                'is_completed' => true
+            ]
+        );
 
-        return redirect()->back()->with('success', 'Task marked as completed.');
+        return response()->json(['success' => 'Задание выполнено.']);
     }
 }

@@ -11,8 +11,8 @@ class UserCourseTask extends Model
 
     protected $fillable = [
         'user_id',
-        'task_course_id',
-        'status_id'
+        'task_id',
+        'is_completed'
     ];
 
     public function user()
@@ -20,13 +20,9 @@ class UserCourseTask extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function taskCourse()
+    public function task()
     {
-        return $this->belongsTo(TaskCourse::class);
-    }
-
-    public function status()
-    {
-        return $this->belongsTo(Status::class);
+        return $this->belongsTo(Task::class);
     }
 }
+

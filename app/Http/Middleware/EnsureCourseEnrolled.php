@@ -16,14 +16,13 @@ class EnsureCourseEnrolled
      * @param  \Closure  $next
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-        $courseId = $request->route('id'); // Assumes course ID is a route parameter
-        $user = Auth::user();
+        $courseId = $request->route('id');
+        $user = $request->user();
 
-        // Check if the user is enrolled in the course
         if (!$user->courses->contains($courseId)) {
-            return response()->json(['message' => 'You are not enrolled in this course.'], 403);
+            return redirect()->route('home')->with('error', 'Вы не подписаны на этот курс.');
         }
 
         return $next($request);

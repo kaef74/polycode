@@ -1,9 +1,9 @@
+import React from 'react';
 import '../../../../css/CatalogList.css';
-
 import search from '../../../../../public/storage/Icons/search.png';
-import CatalogListItem from './CatalogListItem.jsx';
+import CatalogListItem from './CatalogListItem';
 
-const CatalogList = () => {
+const CatalogList = ({ courses }) => {
     return (
         <div className='cataloglist'>
             <div className='cataloglist__search'>
@@ -11,18 +11,12 @@ const CatalogList = () => {
                 <input className='cataloglist__input' placeholder='Поиск..' />
             </div>
             <ul className='cataloglist__list'>
-                <CatalogListItem id={1}/>
-                <CatalogListItem id={1}/>
-                <CatalogListItem id={1}/>
-                <CatalogListItem id={1}/>
-                <CatalogListItem id={1}/>
-                <CatalogListItem id={1}/>
-                <CatalogListItem id={1}/>
-                <CatalogListItem id={1}/>
-                <CatalogListItem id={1}/>
+                {courses.map(course => (
+                    <CatalogListItem key={course.id} course={course} />
+                ))}
             </ul>
         </div>
-    )
-}
+    );
+};
 
 export default CatalogList;

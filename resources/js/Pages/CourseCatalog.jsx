@@ -1,14 +1,18 @@
-import CatalogList from '../Components/CourseCatalog/CatalogList/CatalogList.jsx';
-import Filters from '../Components/CourseCatalog/Filters.jsx';
+import React from 'react';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import Filters from '../Components/CourseCatalog/Filters';
+import CatalogList from '../Components/CourseCatalog/CatalogList/CatalogList';
 import '../../css/CourseCatalog.css';
 
-const CourseCatalog = () => {
+const CourseCatalog = ({ auth, courses }) => {
     return (
-        <section className='coursecatalog'>
-            <Filters />
-            <CatalogList />
-        </section>
-    )
-}
+        <AuthenticatedLayout auth={auth}>
+            <section className='coursecatalog'>
+                <Filters />
+                <CatalogList courses={courses} />
+            </section>
+        </AuthenticatedLayout>
+    );
+};
 
 export default CourseCatalog;

@@ -7,11 +7,9 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import {useForm} from "@inertiajs/react";
 import TextInput from "@/Components/TextInput.jsx";
 
-
 export default function LoginForm({ onRegisterClick }) {
     const { data, setData, post, processing, errors, reset } = useForm({
-        nickname: '',
-        email: '',
+        formData: '',
         password: '',
         remember: false,
     });
@@ -36,16 +34,16 @@ export default function LoginForm({ onRegisterClick }) {
         <div className='login__container' onSubmit={submit}>
             <h2 className='login__title'>Войти в аккаунт</h2>
             <p className='login__text'>
-                Добро пожаловать обратно! Пожалуйста, введите свою почту и пароль для входа в систему.
+                Добро пожаловать обратно! Пожалуйста, введите свою почту или никнейм и пароль для входа в систему.
             </p>
             <form className='login__form'>
                 <>
                     <TextInput
-                        id="email"
-                        type="email"
-                        name='email'
-                        value={data.email}
-                        onChange={(e) => setData('email', e.target.value)}
+                        id="formData"
+                        type="text"
+                        name='formData'
+                        value={data.formData}
+                        onChange={(e) => setData('formData', e.target.value)}
                         className='login__input'
                         placeholder='E-mail или никнейм'
                         autoComplete="username"
@@ -80,4 +78,3 @@ export default function LoginForm({ onRegisterClick }) {
         </div>
     )
 }
-

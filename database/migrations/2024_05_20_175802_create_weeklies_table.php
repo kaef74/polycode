@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('weekly_challenges', function (Blueprint $table) {
+        Schema::create('weeklies', function (Blueprint $table) {
             $table->id();
+            $table->text('description');
+            $table->foreignId('level_id')->constrained('levels');
+            $table->boolean('active')->default(false);
             $table->timestamps();
         });
     }

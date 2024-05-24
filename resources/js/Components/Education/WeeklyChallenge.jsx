@@ -1,10 +1,32 @@
 import '../../../css/WeeklyChallengeComp.css';
 
 import { Link } from '@inertiajs/react';
+import {useEffect, useState} from "react";
 
-const WeeklyChallenge = () => {
+const WeeklyChallenge = ({ weekly, serverTime }) => {
+    const level = weekly ? weekly.level.name : "не указан";
+    const [currentTime, setCurrentTime] = useState(new Date(serverTime));
 
-    const level = "продвинутый";
+    const calculateTimeLeft = () => {
+        const endOfWeek = new Date(currentTime.getTime());
+        endOfWeek.setDate(currentTime.getDate() + (7 - currentTime.getDay()));
+        endOfWeek.setHours(0, 0, 0, 0);
+        const diff = endOfWeek - currentTime;
+        const days = String(Math.floor(diff / (1000 * 60 * 60 * 24)));
+        const hours = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+        const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+        return `${days} д. ${hours} ч. ${minutes} мин.`;
+    };
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentTime(new Date(currentTime.getTime() + 1000));
+        }, 1000);
+        return () => clearInterval(interval);
+    }, [currentTime]);
+
+    const timeLeftFormatted = calculateTimeLeft();
+
 
     return (
         <Link href={route('weekly-challenge')} className='weeklychallenge'>
@@ -17,7 +39,7 @@ const WeeklyChallenge = () => {
                     </li>
                 </ul>
                 <p className='weeklychallenge__time'>
-                    Осталось времени: 3 д. 12 ч. 25 мин.
+                    Осталось времени: {timeLeftFormatted}
                 </p>
             </div>
         </Link>

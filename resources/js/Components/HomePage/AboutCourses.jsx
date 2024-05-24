@@ -16,7 +16,7 @@ const AboutCourses = () => {
                     <p className='aboutcourses__text'>
                     Участники могут выбирать курсы, соответствующие их уровню подготовки и интересам, и изучать материалы в удобном для них темпе.
                     </p>
-                    <Link to="/coursecatalog" onClick={() => {window.scrollTo(0,0)}} className="aboutcourses__button button">Каталог курсов</Link>
+                    <Link href={route('courses.index')} className="aboutcourses__button button">Каталог курсов</Link>
                 </div>
                 <img src={photo} className='aboutcourses__photo' alt="Фото" />
             </div>

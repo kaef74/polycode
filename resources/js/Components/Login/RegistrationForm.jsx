@@ -122,7 +122,7 @@ export default function Register({ handleLoginClick }) {
                         value={data.password_confirmation}
                         onChange={(e) => setData('password_confirmation', e.target.value)}
                         className='registration__input'
-                        placeholder='Пароль конфирс'
+                        placeholder='Повторите пароль'
                         autoComplete="new-password"
                         required
                     />

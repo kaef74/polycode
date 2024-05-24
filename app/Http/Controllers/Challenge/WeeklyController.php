@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Challenge;
 
 use App\Http\Controllers\Controller;
 use App\Models\Challenge\Weekly;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -14,7 +15,24 @@ class WeeklyController extends Controller
      */
     public function index()
     {
-        return Inertia::render('WeeklyChallenge');
+        $data = self::getWeeklyChallengeData();
+        return Inertia::render('WeeklyChallenge', $data);
+    }
+
+    public static function getWeeklyChallengeData()
+    {
+        $now = Carbon::now('Europe/Moscow');
+        $endOfWeek = $now->copy()->next(Carbon::MONDAY)->startOfDay();
+        $timeLeft = $endOfWeek->diffForHumans($now, true);
+
+        $weekly = Weekly::where('active', true)->with(['level'])->first();
+        $serverTime = $now->toDateTimeString();
+
+        return [
+            'weekly' => $weekly ? $weekly->toArray() : null,
+            'timeLeft' => $timeLeft,
+            'serverTime' => $serverTime
+        ];
     }
 
     /**

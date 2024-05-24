@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
-        $this->call(LanguageSeeder::class);
+        $this->call(CourseSeeder::class);
         $this->call(DailyChallengesSeeder::class);
+        $this->call(WeeklyChallengeSeeder::class);
     }
 }

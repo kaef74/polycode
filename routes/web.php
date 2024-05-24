@@ -3,8 +3,7 @@
 use App\Http\Controllers\Challenge\DailyController;
 use App\Http\Controllers\Challenge\WeeklyController;
 use App\Http\Controllers\CompilerController;
-use App\Http\Controllers\Course\CatalogController;
-use App\Http\Controllers\Course\ViewController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -27,9 +26,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/weekly-challenge', [WeeklyController::class, 'index'])->name('weekly-challenge');
 
-    Route::get('/courses-catalog', [CatalogController::class, 'index'])->name('courses-catalog');
+    Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
 
-    Route::get('/course/{id}', [ViewController::class, 'index'])->name('course-id');
+    Route::get('/courses/{id}', [CourseController::class, 'show'])->name('courses.show');
+
 
 });
 

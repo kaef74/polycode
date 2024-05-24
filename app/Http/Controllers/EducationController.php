@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Challenge\DailyController;
-use App\Models\Education;
+use App\Http\Controllers\Challenge\WeeklyController;
+use App\Models\Course;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -15,7 +16,12 @@ class EducationController extends Controller
     public function index()
     {
         $dailyData = DailyController::getDailyChallengeData();
-        return Inertia::render('Education', $dailyData);
+        $weeklyData = WeeklyController::getWeeklyChallengeData();
+        $randomCourses = Course::inRandomOrder()->limit(3)->with('level')->get();
+
+        return Inertia::render('Education', array_merge($dailyData, $weeklyData, [
+            'randomCourses' => $randomCourses,
+        ]));
     }
 
     /**

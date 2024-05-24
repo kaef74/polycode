@@ -7,19 +7,19 @@ import WeeklyChallenge from '../Components/Education/WeeklyChallenge.jsx';
 import UserCourses from '../Components/Profile/UserCourses/UserCourses.jsx';
 import '../../css/Education.css';
 
-export default function Education({ auth, daily, serverTime }) {
+export default function Education({ auth, daily, weekly, serverTime, randomCourses }) {
     return (
         <AuthenticatedLayout auth={auth}>
             <section className='education'>
                 <div className='education__challenges'>
                     <DailyChallenge daily={daily} serverTime={serverTime} />
-                    <WeeklyChallenge />
+                    <WeeklyChallenge weekly={weekly} serverTime={serverTime} />
                 </div>
                 <div className='education__courses'>
                     <div className='education__usercourses'>
                         <UserCourses />
                     </div>
-                    <SuggestedCourses />
+                    <SuggestedCourses courses={randomCourses} />
                 </div>
                 <EducationInfo />
                 <Books />

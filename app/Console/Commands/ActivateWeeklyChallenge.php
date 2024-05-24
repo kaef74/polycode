@@ -3,19 +3,19 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Models\Challenge\Daily;
+use App\Models\Challenge\Weekly;
 use Illuminate\Support\Facades\Storage;
 
-class ActivateDailyChallenge extends Command
+class ActivateWeeklyChallenge extends Command
 {
-    protected $signature = 'challenge:activate-daily';
-    protected $description = 'Activate the next daily challenge based on ID.';
-    protected $stateFilePath = 'current_challenge_state.txt';
+    protected $signature = 'challenge:activate-weekly';
+    protected $description = 'Activate the next weekly challenge based on ID.';
+    protected $stateFilePath = 'current_weekly_challenge_state.txt';
 
     public function handle()
     {
         // Деактивируем все текущие задания
-        Daily::query()->update(['active' => false]);
+        Weekly::query()->update(['active' => false]);
 
         // Получаем текущее состояние
         $currentChallengeId = null;
@@ -25,9 +25,9 @@ class ActivateDailyChallenge extends Command
 
         // Находим следующее задание по ID
         if ($currentChallengeId) {
-            $nextChallenge = Daily::where('id', '>', $currentChallengeId)->orderBy('id')->first();
+            $nextChallenge = Weekly::where('id', '>', $currentChallengeId)->orderBy('id')->first();
         } else {
-            $nextChallenge = Daily::orderBy('id')->first();
+            $nextChallenge = Weekly::orderBy('id')->first();
         }
 
         // Если следующее задание не найдено, оставляем состояние как есть и выходим
@@ -43,6 +43,6 @@ class ActivateDailyChallenge extends Command
         // Обновляем состояние
         Storage::put($this->stateFilePath, $nextChallenge->id);
 
-        $this->info('Activated daily challenge with ID: ' . $nextChallenge->id);
+        $this->info('Activated weekly challenge with ID: ' . $nextChallenge->id);
     }
 }

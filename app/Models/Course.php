@@ -34,4 +34,9 @@ class Course extends Model
     {
         return $this->belongsToMany(User::class, 'user_course');
     }
+
+    public function getEnrollmentCountAttribute()
+    {
+        return $this->users()->count();
+    }
 }

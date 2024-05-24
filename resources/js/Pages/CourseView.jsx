@@ -1,21 +1,18 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.jsx';
 import React from 'react';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.jsx';
 import CourseInfo from '../Components/CourseView/CourseInfo.jsx';
 import CourseReviews from '../Components/CourseView/CourseReviews/CourseReviews.jsx';
 import '../../css/CourseView.css';
-import { usePage } from '@inertiajs/react';
 
-export default function CourseView({ auth }) {
-    // Использование usePage для доступа к параметрам, передаваемым сервером
-    const { props } = usePage();
-    const { course } = props;
-
+const CourseView = ({ auth, course, isEnrolled }) => {
     return (
-        <AuthenticatedLayout auth={auth} >
+        <AuthenticatedLayout auth={auth}>
             <section className='courseview'>
-                <CourseInfo course={course} />
-                <CourseReviews courseId={course.id} />
+                <CourseInfo course={course} isEnrolled={isEnrolled} />
+                <CourseReviews course={course} />
             </section>
         </AuthenticatedLayout>
     );
-}
+};
+
+export default CourseView;

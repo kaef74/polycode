@@ -6,6 +6,7 @@ use App\Http\Controllers\Challenge\DailyController;
 use App\Http\Controllers\Challenge\WeeklyController;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class EducationController extends Controller
@@ -15,12 +16,15 @@ class EducationController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+        $userCourses = $user->courses()->with('level')->get();
         $dailyData = DailyController::getDailyChallengeData();
         $weeklyData = WeeklyController::getWeeklyChallengeData();
         $randomCourses = Course::inRandomOrder()->limit(3)->with('level')->get();
 
         return Inertia::render('Education', array_merge($dailyData, $weeklyData, [
             'randomCourses' => $randomCourses,
+            'userCourses' => $userCourses,
         ]));
     }
 

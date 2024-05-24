@@ -7,7 +7,7 @@ import UserCourses from '@/Components/Profile/UserCourses/UserCourses.jsx';
 import UserStatistics from '@/Components/Profile/UserStatistics.jsx';
 import '../../css/Profile.css';
 
-export default function Profile({ auth }) { // Принимаем только один объект props
+export default function Profile({ auth, userCourses }) { // Принимаем только один объект props
 
     // Извлекаем user из auth
     const { user } = auth;
@@ -22,7 +22,7 @@ export default function Profile({ auth }) { // Принимаем только �
                 <div className='profile__activity'>
                     <h1 className='profile__title'>Профиль пользователя <span className='font-bold'>{user.nickname}</span></h1>
                     <UserActivity/>
-                    <UserCourses/>
+                    <UserCourses courses={userCourses}/>
                 </div>
             </section>
         </AuthenticatedLayout>

@@ -17,7 +17,15 @@ class CourseController extends Controller
 
     public function show($id)
     {
-        $course = Course::with(['tasks', 'languages', 'level'])->findOrFail($id);
-        return Inertia::render('CourseView', ['course' => $course]);
+        $course = Course::with(['tasks', 'languages', 'level'])
+            ->withCount('users')
+            ->findOrFail($id);
+
+        $isEnrolled = auth()->user()->courses->contains($id);
+
+        return Inertia::render('CourseView', [
+            'course' => $course,
+            'isEnrolled' => $isEnrolled,
+        ]);
     }
 }

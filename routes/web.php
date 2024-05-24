@@ -6,6 +6,7 @@ use App\Http\Controllers\CompilerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserCourseController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -30,7 +31,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/courses/{id}', [CourseController::class, 'show'])->name('courses.show');
 
-
+    Route::post('/courses/{course}/enroll', [UserCourseController::class, 'enroll'])->name('courses.enroll');
 });
 
 

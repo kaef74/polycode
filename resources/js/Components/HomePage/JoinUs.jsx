@@ -9,7 +9,7 @@ const JoinUs = () => {
             <p className='joinus__text'>
             Присоединяйтесь к нашему сообществу прямо сейчас и начните свой путь к освоению мира программирования. Наши курсы, соревнования и инструменты помогут вам расширить ваши знания, развить навыки и поднять ваш уровень владения языками программирования.
             </p>
-            <Link to="/login" onClick={() => {window.scrollTo(0,0)}} className='joinus__button button'>Присоединиться</Link>
+            <Link href={route('auth')} className='joinus__button button'>Присоединиться</Link>
         </div>
     )
 }

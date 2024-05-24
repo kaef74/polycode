@@ -37,3 +37,9 @@
     cursor: pointer;
     border-radius: 5px;
 }
+
+.download {
+    color: #59A1FF;
+    font-weight: 700;
+    margin-bottom: 100px;
+}

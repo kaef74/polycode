@@ -9,7 +9,7 @@ const UserCourseItem = ({ course }) => {
     };
 
     return (
-        <Link href={`/passingcourse/${id}`} className='usercourseitem'>
+        <Link href={`/passing-course/${id}`} className='usercourseitem'>
             <div className='usercourseitem__info'>
                 <h3 className='usercourseitem__title'>{truncateDescription(title_course, 18)}</h3>
                 <p className='usercourseitem__text'>Уровень: <span className='color-blue'>{level ? level.name : 'Не указан'}</span></p>
@@ -19,7 +19,7 @@ const UserCourseItem = ({ course }) => {
                 <p className='usercourseitem__text'>Задач решено: {solved_tasks ?? 0}</p>
             </div>
         </Link>
-    )
-}
+    );
+};
 
 export default UserCourseItem;

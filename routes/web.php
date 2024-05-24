@@ -7,6 +7,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserCourseController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -35,6 +36,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/courses/{course}/enroll', [UserCourseController::class, 'enroll'])->name('courses.enroll');
 
     Route::get('/filters', [FilterController::class, 'getFilters'])->name('filters.get');
+
+    Route::middleware(['course.enrolled'])->group(function () {
+        Route::get('/passing-course/{id}', [TaskController::class, 'show'])->name('passing-course.show');
+    });
+
+    Route::post('/tasks/{task}/complete', [TaskController::class, 'markAsCompleted'])->name('tasks.complete');
 });
 
 
